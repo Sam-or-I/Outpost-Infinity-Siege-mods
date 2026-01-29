@@ -1,0 +1,29 @@
+Step 1
+
+Install Fmodel and UAssetGUI. Open Fmodel and navigate it to game files (SteamLibrary\steamapps\common\Outpost\U01\Content\Paks). Choose game version UE_5_3. Enter AES key and mapping file. Choose loading mode "All" and press load. You can now view game files.
+
+Step 2
+
+Open CMD and navigate it to your modding folder using "cd /d J:\<Your modding folder name>". Using Fmodel choose file you want to change. Right click file and choose option Copy>Package Path. You will get something like this "U01/Content/Outpost/DataTable/DT_OP_BuildingMaterialtCraft.uasset".
+With CMD enter this "retoc --aes-key 0xF9167E48D0C006A54B8623BFC56987411DEB231C8098E45C0348B869F1781AA5 to-legacy --no-shaders "<game files path>" --filter "U01/Content/Outpost/DataTable/DT_OP_BuildingMaterialtCraft.uasset" --version UE5_3 <your mod name>".
+This command will unpack file with recipes for crafting buildings.
+
+Step 3
+
+Open UAssetGUI. Choose game version UE_5_3 and mappings file. Click Open>File. Navigate to file you just unpacked. You can now edit this file, don't forget to save changes.
+
+Step 4
+
+After you done editting enter this to CMD "retoc --aes-key 0xF9167E48D0C006A54B8623BFC56987411DEB231C8098E45C0348B869F1781AA5 to-zen <your mod folder name> <your mod name>_P.utoc --version UE5_3". This will pack files so they can be used as mod.
+
+Step 5
+
+For mod to actually work you will need to patch your "U01-Win64-Shipping" using Outpost Mod Unlocker https://www.nexusmods.com/outpostinfinitysiege/mods/3. After you patched game grab "sig-file.sig" from this repository and rename it to "<your mod name>_P.sig"
+
+Step 6
+
+Your mod consist of 4 files. Their extensions are .pak/.sig/.ucas/.utoc. All these files sould be dropped to mods folder "SteamLibrary\steamapps\common\Outpost\U01\Content\Paks\Mods" in my case.
+
+Step 7
+
+You can now test your mod and/or continue your modding adventure.
